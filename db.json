@@ -1,11 +1,25 @@
 {
   "logs": [
     {
-      "id": 1,
-      "message": "Fixed New Tech on 002",
+      "id": 2,
+      "message": "Fixed hard drive on workstation 002",
       "attention": false,
       "tech": "John Doe",
-      "date": "2019-07-12T20:05:56.218Z"
+      "date": "2019-07-12T20:25:05.482Z"
+    },
+    {
+      "message": "Changed Network card 007",
+      "attention": true,
+      "tech": "John Doe",
+      "date": "2019-07-12T20:24:32.204Z",
+      "id": 3
+    },
+    {
+      "message": "1122 Wireless Down",
+      "attention": false,
+      "tech": "Sara Wilson",
+      "date": "2019-07-12T20:25:19.025Z",
+      "id": 4
     }
   ],
   "techs": [
