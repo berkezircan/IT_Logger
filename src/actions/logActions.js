@@ -3,7 +3,10 @@ import {
   SET_LOADING,
   LOGS_ERROR,
   ADD_LOG,
-  DELETE_LOG
+  DELETE_LOG,
+  SET_CURRENT,
+  CLEAR_CURRENT,
+  UPDATE_LOG
 } from './types';
 
 // Redux thunk for async operations
@@ -21,7 +24,7 @@ import {
 //   };
 // };
 
-// Get logs from server
+// Get logs from server -> From Backend
 export const getLogs = () => async dispatch => {
   try {
     setLoading();
@@ -41,7 +44,7 @@ export const getLogs = () => async dispatch => {
   }
 };
 
-// Add a new log
+// Add a new log -> From Backend
 export const addLog = log => async dispatch => {
   try {
     setLoading();
@@ -67,7 +70,7 @@ export const addLog = log => async dispatch => {
   }
 };
 
-// Delete log from server
+// Delete log on server -> From Backend
 export const deleteLog = id => async dispatch => {
   try {
     setLoading();
@@ -88,7 +91,49 @@ export const deleteLog = id => async dispatch => {
   }
 };
 
-// Set loading to true
+// Update log on server -> From Backend
+export const updateLog = log => async dispatch => {
+  try {
+    setLoading();
+
+    const res = await fetch(`./logs/${log.id}`, {
+      method: 'PUT',
+      body: JSON.stringify(log),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+
+    const data = await res.json();
+
+    dispatch({
+      type: UPDATE_LOG,
+      payload: data
+    });
+  } catch (err) {
+    dispatch({
+      type: LOGS_ERROR,
+      payload: err.response.data
+    });
+  }
+};
+
+// Set Current Log -> UI Required
+export const setCurrent = log => {
+  return {
+    type: SET_CURRENT,
+    payload: log
+  };
+};
+
+// Clear Current Log -> -> UI Required
+export const clearCurrent = () => {
+  return {
+    type: CLEAR_CURRENT
+  };
+};
+
+// Set loading to true -> UI Required
 export const setLoading = () => {
   return {
     type: SET_LOADING

@@ -1,5 +1,13 @@
 {
-  "logs": [],
+  "logs": [
+    {
+      "id": 1,
+      "message": "Fixed New Tech on 002",
+      "attention": false,
+      "tech": "John Doe",
+      "date": "2019-07-12T20:05:56.218Z"
+    }
+  ],
   "techs": [
     {
       "id": 1,
