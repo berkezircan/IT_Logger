@@ -5,7 +5,6 @@ import TechItem from './TechItem';
 import { getTechs } from '../../actions/techActions';
 
 const TechListModal = ({ getTechs, tech: { techs, loading } }) => {
-  // Component did mount
   useEffect(() => {
     getTechs();
     // eslint-disable-next-line
